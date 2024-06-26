@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://invoice-mern-backend.vercel.app/api';
 
 export const createSeller = async (seller) => {
   return await axios.post(`${API_URL}/sellers`, seller);
