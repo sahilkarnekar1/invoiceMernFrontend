@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from './components/Home';
 import OrderList from './components/OrderList';
 import InvoicePage from './components/InvoicePage';
+import OrderForm from './components/OrderForm';
 
 
 const App = () => {
@@ -16,6 +17,7 @@ const App = () => {
 <Route path="/" element={ <Home/> } />
 <Route path="/invoices" element={ <OrderList/> } />
 <Route path="/invoice" element={<InvoicePage/>} />
+<Route path="/orderForm" element={<OrderForm/>} />
 </Routes>
 
 
