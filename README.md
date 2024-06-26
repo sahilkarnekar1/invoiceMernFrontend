@@ -10,6 +10,8 @@ https://invoice-mern-frontend.vercel.app/
 
 - Create new seller, Item, Order records
 - View a list of all Orders/invoices
+- preview invoice
+- download invoice in pdf format
 
 
 ## Requirements
