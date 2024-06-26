@@ -8,16 +8,20 @@ const Home = () => {
   return (
     <>
       <div className='width-100'>
+      <div className='mt-3'>
+        <Link to="/invoices">
+            <button type="button" className=" m-1 btn btn-secondary">Go to Invoice List</button>
+          </Link>
+          <Link to="/orderForm">
+            <button type="button" className="m-1  btn btn-secondary">Order Form</button>
+          </Link>
+        </div>
         <SellerForm/>
       
         <ItemForm/>
-        <Link to="/invoices">
-            <button type="button" className="btn btn-secondary">Go to Invoice List</button>
-          </Link>
-          <Link to="/orderForm">
-            <button type="button" className="btn btn-secondary">Order Form</button>
-          </Link>
-        
+
+
+       
       </div>
     </>
   )

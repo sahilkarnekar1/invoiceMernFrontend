@@ -187,6 +187,9 @@ const OrderForm = () => {
 
   return (
     <form className="container mt-4" onSubmit={handleSubmit}>
+      <Link to="/invoices">
+            <button type="button" className="m-1 btn btn-secondary">Go to Invoice List</button>
+          </Link>
       <h2>Create Order</h2>
       <div className="row">
         <div className="col-md-6">
@@ -266,10 +269,8 @@ const OrderForm = () => {
 
       <div className="row">
         <div className="col-md-12">
-          <button type="submit" className="btn btn-success mr-2">Create Order</button>
-          <Link to="/invoices">
-            <button type="button" className="btn btn-secondary">Go to Invoice List</button>
-          </Link>
+          <button type="submit" className="m-1 btn btn-success mr-2">Create Order</button>
+          
         </div>
       </div>
     </form>
