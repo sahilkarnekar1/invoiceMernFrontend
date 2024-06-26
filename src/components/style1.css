@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.container11 {
+    width: 600px;
+    background-color: white;
+    padding: 40px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.header11 {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+justify-content: space-between;
+text-align: right;
+}
+
+
+.logo11 {
+    width: 200px;
+    height: 60px;
+    margin: 10px;
+}
+.sub{
+    display: flex;
+}
+.c1{
+    display: block;
+    width: 50%;
+    
+    
+}
+.c11{
+    display: block;
+    width: 50%;
+    text-align: right;
+}
+
+
+.items-table {
+    margin-bottom: 20px;
+}
+
+.items-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.items-table th, .items-table td {
+    border: 1px solid #ddd;
+    padding: 5px;
+    text-align: left;
+}
+
+.items-table th {
+    background-color: #f0f0f0;
+}
+.sign{
+    text-align: right;
+    border: solid 2px black;
+    justify-content: space-between; /* Distributes space between child elements */
+  align-items: center;
+    
+}
+.pSignature{
+    width: 30%;
+    height: 50px;
+    background-color: gray;
+    margin-left: auto; 
+    
+}
+p{
+    margin: 0;
+
+}
+.btnsetcolordark{
+    margin: 20px;
+    background-color: gray;
+    padding: 10px;
+    color: white;
+}
+.btndownload{
+    margin: 20px;
+    background-color: rgb(41, 107, 187);
+    padding: 10px;
+    color: white;
+}
