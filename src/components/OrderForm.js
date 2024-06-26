@@ -36,8 +36,8 @@ const OrderForm = () => {
   const [sellers, setSellers] = useState([]);
   const [items, setItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
-  const [unitPrices, setUnitPrices] = useState({}); // Store unit prices for items
-  const [calculatedFields, setCalculatedFields] = useState({}); // Store calculated fields
+  const [unitPrices, setUnitPrices] = useState({});
+  const [calculatedFields, setCalculatedFields] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -78,7 +78,6 @@ const OrderForm = () => {
     newSelectedItems[index][name] = value;
     setSelectedItems(newSelectedItems);
 
-    // Perform calculations
     const item = newSelectedItems[index];
     const unitPrice = unitPrices[item.item];
     const quantity = item.quantity ? parseFloat(item.quantity) : 0;
@@ -118,6 +117,21 @@ const OrderForm = () => {
     setSelectedItems([...selectedItems, { item: '', quantity: '', discount: '', shippingCharges: '', netAmount: '', taxRate: '' }]);
   };
 
+  const handleRemoveItem = (index) => {
+    const newSelectedItems = selectedItems.filter((_, i) => i !== index);
+    const newCalculatedFields = { ...calculatedFields };
+    delete newCalculatedFields[index];
+
+    const adjustedCalculatedFields = {};
+    Object.keys(newCalculatedFields).forEach(key => {
+      const newKey = key > index ? key - 1 : key;
+      adjustedCalculatedFields[newKey] = newCalculatedFields[key];
+    });
+
+    setSelectedItems(newSelectedItems);
+    setCalculatedFields(adjustedCalculatedFields);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -130,7 +144,7 @@ const OrderForm = () => {
           buyerTaxAmount: calculatedFields[index].buyerTaxAmount,
           totalAmount: calculatedFields[index].totalAmount,
         })),
-        totalFinalAmount: selectedItems.reduce((sum, item, index) => sum + calculatedFields[index].totalAmount, 0) // Include shipping charges in the total amount
+        totalFinalAmount: selectedItems.reduce((sum, item, index) => sum + calculatedFields[index].totalAmount, 0)
       };
       await createOrder(newOrder);
       alert('Order created successfully!');
@@ -173,7 +187,7 @@ const OrderForm = () => {
 
   return (
     <form className="container mt-4" onSubmit={handleSubmit}>
-       <h2>Create Order</h2>
+      <h2>Create Order</h2>
       <div className="row">
         <div className="col-md-6">
           <input type="text" className="form-control mb-3" name="orderNo" value={order.orderNo} onChange={handleChange} placeholder="Order No" required />
@@ -243,6 +257,7 @@ const OrderForm = () => {
               <input type="number" className="form-control mb-2" name="sellerTaxAmount" value={calculatedFields[index]?.sellerTaxAmount || ''} placeholder="Seller Tax Amount" readOnly />
               <input type="number" className="form-control mb-2" name="buyerTaxAmount" value={calculatedFields[index]?.buyerTaxAmount || ''} placeholder="Buyer Tax Amount" readOnly />
               <input type="number" className="form-control mb-2" name="totalAmount" value={calculatedFields[index]?.totalAmount || ''} placeholder="Total Amount" readOnly />
+              <button type="button" className="btn btn-danger" onClick={() => handleRemoveItem(index)}>Remove</button>
             </div>
           ))}
           <button type="button" className="btn btn-primary mb-3" onClick={handleAddItem}>Add Item</button>
